@@ -38,7 +38,7 @@ const HeroSection = ({
           className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-primary/20 flex-shrink-0"
         >
           <img
-            src="/profile.jpg"
+            src="/profile.png"
             alt="Profile"
             className="w-full h-full object-cover"
           />
