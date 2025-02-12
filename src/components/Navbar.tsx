@@ -16,7 +16,7 @@ const Navbar = () => {
           href="#"
           className="text-xl font-bold hover:text-primary transition-colors"
         >
-          ZC
+          ZenenDev
         </a>
 
         <div className="flex items-center gap-4 sm:gap-8">
