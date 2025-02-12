@@ -17,13 +17,13 @@ interface WorkGridProps {
 
 const defaultProjects: Project[] = [
   {
-    title: "E-Commerce Platform",
+    title: "Fabio Canchila",
     description:
-      "A modern e-commerce platform built with React and Node.js, featuring real-time inventory management and secure payment processing.",
-    imageUrl: "https://images.unsplash.com/photo-1557821552-17105176677c",
-    demoUrl: "https://example.com/ecommerce",
-    githubUrl: "https://github.com/example/ecommerce",
-    technologies: ["React", "Node.js", "MongoDB"],
+      "A web-based consulting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, an intuitive admin dashboard for content management, and a streamlined consultation booking system.",
+    imageUrl: "/fabiocanchila.png",
+    demoUrl: "https://sage-narwhal-a50b96.netlify.app/",
+    githubUrl: "https://github.com/ZenenContreras/FabioCanchila",
+    technologies: ["React", "Tailwind CSS", "Supabase"],
   },
   {
     title: "Weather Dashboard",
