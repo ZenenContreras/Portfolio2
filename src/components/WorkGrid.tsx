@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
+import fabioImage from "/fabiocanchila.png";
 
 interface Project {
   title: string;
@@ -17,10 +18,10 @@ interface WorkGridProps {
 
 const defaultProjects: Project[] = [
   {
-    title: "Fabio Canchila",
+    title: "Consulting Platform",
     description:
       "A web-based consulting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, an intuitive admin dashboard for content management, and a streamlined consultation booking system.",
-    imageUrl: "/fabiocanchila.png",
+    imageUrl: fabioImage,
     demoUrl: "https://sage-narwhal-a50b96.netlify.app/",
     githubUrl: "https://github.com/ZenenContreras/FabioCanchila",
     technologies: ["React", "Tailwind CSS", "Supabase"],
