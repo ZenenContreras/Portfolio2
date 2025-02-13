@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { SEO } from "./SEO";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HeroSection from "./HeroSection";
 import WorkGrid from "./WorkGrid";
@@ -12,6 +14,23 @@ import { Card, CardContent } from "./ui/card";
 import { Send } from "lucide-react";
 
 const HomePage = () => {
+  const { section } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (section) {
+      const element = document.getElementById(section);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for navbar
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [section]);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
@@ -21,6 +40,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO />
       <motion.div
         style={{ opacity }}
         className="fixed inset-0 pointer-events-none bg-gradient-to-b from-background to-transparent"
@@ -32,7 +52,9 @@ const HomePage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <HeroSection name="Zenen Contreras" role="Software Engineer" />
+        <div id="hero">
+          <HeroSection name="Zenen Contreras" role="Software Engineer" />
+        </div>
       </motion.div>
 
       <motion.div
@@ -61,9 +83,9 @@ const HomePage = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         id="contact"
-        className="py-16 px-4 bg-background"
+        className="py-24 px-4 bg-background/50 backdrop-blur-sm"
       >
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -71,9 +93,12 @@ const HomePage = () => {
             transition={{ delay: 0.2 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-            <p className="text-muted-foreground">
-              Have a project in mind? Let's work together!
+            <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">
+              Let's Connect
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Ready to bring your ideas to life? I'm here to help transform your
+              vision into reality.
             </p>
           </motion.div>
 
@@ -83,34 +108,43 @@ const HomePage = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <Card>
-              <CardContent className="p-6">
+            <Card className="backdrop-blur-md bg-background/50 border-primary/10">
+              <CardContent className="p-8">
                 <form className="space-y-6">
-                  <div className="space-y-2">
-                    <Input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full"
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Input
+                        type="text"
+                        placeholder="Your Name"
+                        className="w-full bg-background/50"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Input
+                        type="email"
+                        placeholder="Your Email"
+                        className="w-full bg-background/50"
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <Input
-                      type="email"
-                      placeholder="Your Email"
-                      className="w-full"
+                      type="text"
+                      placeholder="Subject"
+                      className="w-full bg-background/50"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <Textarea
                       placeholder="Your Message"
-                      className="w-full min-h-[150px]"
+                      className="w-full min-h-[200px] bg-background/50"
                     />
                   </div>
 
-                  <Button className="w-full" type="submit">
-                    <Send className="mr-2 h-4 w-4" />
+                  <Button className="w-full" size="lg">
+                    <Send className="mr-2 h-5 w-5" />
                     Send Message
                   </Button>
                 </form>
