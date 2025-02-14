@@ -73,6 +73,8 @@ const WorkGrid = ({ projects = defaultProjects }: WorkGridProps) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
         >
           {projects.map((project, index) => (
