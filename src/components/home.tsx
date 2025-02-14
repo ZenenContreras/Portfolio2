@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { SEO } from "./SEO";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion } from "./providers/MotionProvider";
+import { useScroll, useTransform } from "framer-motion";
 import HeroSection from "./HeroSection";
 import WorkGrid from "./WorkGrid";
 import SkillsSection from "./SkillsSection";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { Toaster } from "sonner";
+import ContactForm from "./ContactForm";
 import { Card, CardContent } from "./ui/card";
-import { Send } from "lucide-react";
 
 const HomePage = () => {
   const { section } = useParams();
@@ -40,6 +39,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Toaster position="top-right" richColors />
       <SEO />
       <motion.div
         style={{ opacity }}
@@ -110,44 +110,7 @@ const HomePage = () => {
           >
             <Card className="backdrop-blur-md bg-background/50 border-primary/10">
               <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Input
-                        type="text"
-                        placeholder="Your Name"
-                        className="w-full bg-background/50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Input
-                        type="email"
-                        placeholder="Your Email"
-                        className="w-full bg-background/50"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Input
-                      type="text"
-                      placeholder="Subject"
-                      className="w-full bg-background/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Textarea
-                      placeholder="Your Message"
-                      className="w-full min-h-[200px] bg-background/50"
-                    />
-                  </div>
-
-                  <Button className="w-full" size="lg">
-                    <Send className="mr-2 h-5 w-5" />
-                    Send Message
-                  </Button>
-                </form>
+                <ContactForm />
               </CardContent>
             </Card>
           </motion.div>
