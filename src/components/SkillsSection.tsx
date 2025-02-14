@@ -106,7 +106,8 @@ const SkillsSection = () => {
               key={skill.name}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
             >
               <Card className="h-full hover:shadow-lg transition-all duration-300 bg-background/50 backdrop-blur-sm border-primary/10">
                 <CardContent className="p-6">
