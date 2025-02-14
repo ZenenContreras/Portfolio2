@@ -4,6 +4,7 @@ import Home from "./components/home";
 import routes from "tempo-routes";
 import { MotionProvider } from "./components/providers/MotionProvider";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           </Routes>
           {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
           <Analytics />
+          <SpeedInsights />
         </>
       </Suspense>
     </MotionProvider>
