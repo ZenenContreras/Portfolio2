@@ -10,6 +10,7 @@ const Navbar = () => {
   const currentSection = pathname.slice(1) || "home";
 
   const navItems = [
+    { href: "hero", label: "Home" },
     { href: "projects", label: "Projects" },
     { href: "technologies", label: "Technologies" },
     { href: "contact", label: "Contact" },
