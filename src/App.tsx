@@ -3,6 +3,7 @@ import { useRoutes, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import routes from "tempo-routes";
 import { MotionProvider } from "./components/providers/MotionProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/:section" element={<Home />} />
           </Routes>
           {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
+          <Analytics />
         </>
       </Suspense>
     </MotionProvider>
