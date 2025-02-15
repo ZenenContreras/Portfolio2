@@ -108,7 +108,7 @@ const HomePage = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <Card className="backdrop-blur-md bg-background/50 border-primary/10">
+            <Card className="backdrop-blur-md bg-background/50 border-primary/20">
               <CardContent className="p-8">
                 <ContactForm />
               </CardContent>
