@@ -51,9 +51,23 @@ const WorkGrid = ({ projects = defaultProjects }: WorkGridProps) => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="bg-background w-full py-16 px-4 sm:px-6 lg:px-8"
+      transition={{ duration: 0.2 }}
+      className="relative bg-background w-full py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 -z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, hsl(var(--primary)/0.1) 0%, transparent 50%)",
+          }}
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -61,7 +75,7 @@ const WorkGrid = ({ projects = defaultProjects }: WorkGridProps) => {
           transition={{ delay: 0.2 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
             Featured Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -73,17 +87,18 @@ const WorkGrid = ({ projects = defaultProjects }: WorkGridProps) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 hover:cursor-pointer"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * index }}
+              transition={{ delay: 0.1 * index }}
+              whileHover={{ y: -5 }}
+              className="relative group"
             >
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 " />
               <ProjectCard {...project} />
             </motion.div>
           ))}
