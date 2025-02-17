@@ -19,15 +19,6 @@ interface WorkGridProps {
 
 const defaultProjects: Project[] = [
   {
-    title: "Consulting Platform",
-    description:
-      "A web-based consulting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, an intuitive admin dashboard for content management, and a streamlined consultation booking system.",
-    imageUrl: fabioImage,
-    demoUrl: "https://sage-narwhal-a50b96.netlify.app/",
-    githubUrl: "https://github.com/ZenenContreras/FabioCanchila",
-    technologies: ["React", "Tailwind CSS", "Supabase"],
-  },
-  {
     title: "Colombia Explorer",
     description:
       "Colombia Explorer 🇨🇴 is an interactive web app built with React and TypeScript, featuring a responsive design with Tailwind CSS, interactive maps via Leaflet, and smooth animations using Framer Motion. It offers real-time search, category filtering, and utilizes Lucide Icons alongside Shadcn/UI components for a modern user experience.",
@@ -35,6 +26,15 @@ const defaultProjects: Project[] = [
     demoUrl: "https://colombia-explorer.vercel.app",
     githubUrl: "https://github.com/ZenenContreras/ColombiaExplorer",
     technologies: ["React", "TypeScript", "Tailwind CSS ", "Leaflet Maps"],
+  },
+  {
+    title: "Consulting Platform",
+    description:
+      "A web-based consulting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, an intuitive admin dashboard for content management, and a streamlined consultation booking system.",
+    imageUrl: fabioImage,
+    demoUrl: "https://sage-narwhal-a50b96.netlify.app/",
+    githubUrl: "https://github.com/ZenenContreras/FabioCanchila",
+    technologies: ["React", "Tailwind CSS", "Supabase"],
   },
   {
     title: "Task Management App",
