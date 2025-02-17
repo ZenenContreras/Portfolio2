@@ -34,7 +34,7 @@ const defaultProjects: Project[] = [
     imageUrl: colombiaexplorer,
     demoUrl: "https://colombia-explorer.vercel.app",
     githubUrl: "https://github.com/ZenenContreras/ColombiaExplorer",
-    technologies: ["React", "TypeScript", "Tailwind CSS ", "Leadflet Maps"],
+    technologies: ["React", "TypeScript", "Tailwind CSS ", "Leaflet Maps"],
   },
   {
     title: "Task Management App",
