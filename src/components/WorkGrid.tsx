@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import fabioImage from "/fabiocanchila.png";
+import colombiaexplorer from "/colombiaexplorer.png";
 
 interface Project {
   title: string;
@@ -27,13 +28,13 @@ const defaultProjects: Project[] = [
     technologies: ["React", "Tailwind CSS", "Supabase"],
   },
   {
-    title: "Weather Dashboard",
+    title: "Colombia Explorer",
     description:
-      "Real-time weather tracking application with interactive maps and detailed forecasts using weather API integration.",
-    imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
-    demoUrl: "https://example.com/weather",
-    githubUrl: "https://github.com/example/weather",
-    technologies: ["React", "TypeScript", "OpenWeather API"],
+      "Colombia Explorer 🇨🇴 is an interactive web app built with React and TypeScript, featuring a responsive design with Tailwind CSS, interactive maps via Leaflet, and smooth animations using Framer Motion. It offers real-time search, category filtering, and utilizes Lucide Icons alongside Shadcn/UI components for a modern user experience.",
+    imageUrl: colombiaexplorer,
+    demoUrl: "https://colombia-explorer.vercel.app",
+    githubUrl: "https://github.com/ZenenContreras/ColombiaExplorer",
+    technologies: ["React", "TypeScript", "Tailwind CSS, Leadflet Maps"],
   },
   {
     title: "Task Management App",
