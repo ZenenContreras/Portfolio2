@@ -32,7 +32,7 @@ const defaultProjects: Project[] = [
     description:
       "A web-based consulting platform built with React, Tailwind CSS, and Supabase, featuring user authentication, an intuitive admin dashboard for content management, and a streamlined consultation booking system.",
     imageUrl: fabioImage,
-    demoUrl: "https://sage-narwhal-a50b96.netlify.app/",
+    demoUrl: "https://fabiocanchila.vercel.app",
     githubUrl: "https://github.com/ZenenContreras/FabioCanchila",
     technologies: ["React", "Tailwind CSS", "Supabase"],
   },
