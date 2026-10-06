@@ -12,7 +12,7 @@ export function ProjectCarousel() {
       <h2 id="projects-heading" className="section-title">
         projects.
       </h2>
-      <div className="carousel-breakout mt-6">
+      <div className="carousel-breakout mt-6 md:mt-3">
         <div className="carousel-stage">
           <FlexCarousel
             items={projects.map((item) => ({
@@ -41,18 +41,18 @@ export function ProjectCarousel() {
             liquid={0}
             followCursor={false}
             autoplay
-            interval={2.5}
+            interval={3.5}
             captureWheel
             onChange={(index) => setActive(index)}
           />
         </div>
       </div>
-      <div className="mx-auto mt-4 max-w-md text-center">
+      <div className="mx-auto mt-4 max-w-md text-center md:mt-2">
         <p className="text-[15px] text-foreground">{project.title}</p>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
           {project.summary}
         </p>
-        <div className="mt-2">
+        <div className="mt-4">
           <ProjectDetails project={project} />
         </div>
       </div>

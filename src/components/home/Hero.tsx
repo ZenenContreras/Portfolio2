@@ -16,8 +16,8 @@ export function Hero() {
             <DitherVeil
               src={site.portrait}
               fit="cover"
-              pixelSize={2}
-              revealRadius={32}
+              pixelSize={1}
+              revealRadius={45}
             />
           </div>
         </div>

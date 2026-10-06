@@ -142,6 +142,16 @@
   height: clamp(20rem, 46vw, 32rem);
 }
 
+@media (min-width: 48rem) {
+  .carousel-breakout {
+    overflow: hidden;
+  }
+
+  .carousel-stage {
+    margin-block: calc(clamp(20rem, 46vw, 32rem) * -0.1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-link,
   .social-link {

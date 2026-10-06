@@ -25,7 +25,7 @@ export function ProjectDetails({
           </li>
         ))}
       </ul>
-      <p className={`mt-2 flex flex-wrap gap-4 text-xs ${row}`}>
+      <p className={`mt-4 flex flex-wrap gap-4 text-xs ${row}`}>
         {project.repo ? (
           <a
             href={project.repo}

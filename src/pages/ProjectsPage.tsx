@@ -14,7 +14,7 @@ export function ProjectsPage() {
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
               {project.summary}
             </p>
-            <div className="mt-2">
+            <div className="mt-4">
               <ProjectDetails project={project} align="start" />
             </div>
           </li>
