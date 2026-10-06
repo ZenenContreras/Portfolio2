@@ -1,7 +1,8 @@
-import { useState } from "react"
-import FlexCarousel from "@/components/FlexCarousel"
+import { lazy, Suspense, useState } from "react"
 import { ProjectDetails } from "@/components/home/ProjectDetails"
 import { projects } from "@/content/projects"
+
+const FlexCarousel = lazy(() => import("@/components/FlexCarousel"))
 
 export function ProjectCarousel() {
   const [active, setActive] = useState(0)
@@ -14,37 +15,39 @@ export function ProjectCarousel() {
       </h2>
       <div className="carousel-breakout mt-6 md:mt-3">
         <div className="carousel-stage">
-          <FlexCarousel
-            items={projects.map((item) => ({
-              src: item.image,
-              alt: item.imageAlt,
-              title: item.title,
-              subtitle: item.summary,
-            }))}
-            preset="arch"
-            intro="rise"
-            cardHeight={0.5}
-            gap={15}
-            squeeze={0}
-            focusOnClick
-            captions={false}
-            fit="landscape"
-            radius={10}
-            lensWidth={0.8}
-            lensHeight={0.8}
-            tilt={0}
-            roundness={1}
-            bend={0}
-            reach={0.31}
-            curl="rise"
-            dispersion={0}
-            liquid={0}
-            followCursor={false}
-            autoplay
-            interval={3.5}
-            captureWheel
-            onChange={(index) => setActive(index)}
-          />
+          <Suspense fallback={null}>
+            <FlexCarousel
+              items={projects.map((item) => ({
+                src: item.image,
+                alt: item.imageAlt,
+                title: item.title,
+                subtitle: item.summary,
+              }))}
+              preset="arch"
+              intro="rise"
+              cardHeight={0.5}
+              gap={15}
+              squeeze={0}
+              focusOnClick
+              captions={false}
+              fit="landscape"
+              radius={10}
+              lensWidth={0.8}
+              lensHeight={0.8}
+              tilt={0}
+              roundness={1}
+              bend={0}
+              reach={0.31}
+              curl="rise"
+              dispersion={0}
+              liquid={0}
+              followCursor={false}
+              autoplay
+              interval={3.5}
+              captureWheel
+              onChange={(index) => setActive(index)}
+            />
+          </Suspense>
         </div>
       </div>
       <div className="mx-auto mt-4 max-w-md text-center md:mt-2">

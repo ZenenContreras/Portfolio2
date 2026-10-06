@@ -1,7 +1,9 @@
-import DitherVeil from "@/components/DitherVeil"
-import RotatingText from "@/components/RotatingText"
+import { lazy, Suspense } from "react"
 import { GithubActivity } from "@/components/home/GithubActivity"
 import { roles, site } from "@/content/site"
+
+const DitherVeil = lazy(() => import("@/components/DitherVeil"))
+const RotatingText = lazy(() => import("@/components/RotatingText"))
 
 export function Hero() {
   return (
@@ -13,12 +15,14 @@ export function Hero() {
             role="img"
             aria-label={`Portrait of ${site.name}`}
           >
-            <DitherVeil
-              src={site.portrait}
-              fit="cover"
-              pixelSize={1}
-              revealRadius={45}
-            />
+            <Suspense fallback={null}>
+              <DitherVeil
+                src={site.portrait}
+                fit="cover"
+                pixelSize={1}
+                revealRadius={45}
+              />
+            </Suspense>
           </div>
         </div>
         <div className="min-w-0">
@@ -29,13 +33,15 @@ export function Hero() {
             {site.name}
           </h1>
           <div className="overflow-hidden text-base leading-6 text-foreground">
-            <RotatingText
-              texts={roles}
-              splitBy="words"
-              rotationInterval={2400}
-              staggerDuration={0.03}
-              mainClassName="text-base leading-6 text-foreground"
-            />
+            <Suspense fallback={<span>{roles[0]}</span>}>
+              <RotatingText
+                texts={roles}
+                splitBy="words"
+                rotationInterval={2400}
+                staggerDuration={0.03}
+                mainClassName="text-base leading-6 text-foreground"
+              />
+            </Suspense>
           </div>
         </div>
       </div>
