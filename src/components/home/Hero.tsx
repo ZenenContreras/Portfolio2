@@ -7,17 +7,19 @@ export function Hero() {
   return (
     <section aria-labelledby="profile-name">
       <div className="flex items-center gap-4">
-        <div
-          className="size-18 shrink-0 overflow-hidden rounded-full"
-          role="img"
-          aria-label={`Portrait of ${site.name}`}
-        >
-          <DitherVeil
-            src={site.portrait}
-            fit="cover"
-            pixelSize={2}
-            revealRadius={32}
-          />
+        <div className="portrait-wrap relative shrink-0">
+          <div
+            className="size-18 overflow-hidden rounded-full"
+            role="img"
+            aria-label={`Portrait of ${site.name}`}
+          >
+            <DitherVeil
+              src={site.portrait}
+              fit="cover"
+              pixelSize={2}
+              revealRadius={32}
+            />
+          </div>
         </div>
         <div className="min-w-0">
           <h1

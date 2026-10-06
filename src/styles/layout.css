@@ -6,7 +6,7 @@
   cover: the column, section titles, navigation, and the social list.
 
   Column: 40rem, the same measure as the reference landing.
-  Section titles: Instrument Serif italic, set on --font-heading.
+  Section titles use Geist, the same sans as the rest of the page.
   Do not restyle the Flex Carousel. It keeps the React Bits look.
 */
 
@@ -18,11 +18,12 @@
 }
 
 @utility section-title {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.75rem;
+  letter-spacing: -0.02em;
   color: var(--primary);
 }
 
@@ -56,6 +57,13 @@
 
 .nav-link[aria-current="page"] {
   color: var(--foreground);
+}
+
+@media (max-width: 40rem) {
+  .site-nav .nav-link {
+    padding-inline: 0.3rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .page-stack > * + * {
@@ -131,6 +139,55 @@
 
 .carousel-stage {
   height: clamp(20rem, 46vw, 32rem);
+}
+
+.portrait-wrap {
+  margin-top: 1.6rem;
+}
+
+.portrait-cue {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 0.2rem);
+  z-index: 1;
+  width: 5.4rem;
+  color: var(--foreground);
+  pointer-events: none;
+  transform: translateX(-46%) rotate(-8deg);
+}
+
+.portrait-cue svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.portrait-cue-label {
+  position: absolute;
+  inset: 0.15rem 0.35rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.portrait-cue-desk {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .portrait-cue-desk {
+    display: inline;
+  }
+
+  .portrait-cue-mob {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

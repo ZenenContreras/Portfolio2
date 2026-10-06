@@ -31,9 +31,9 @@ function ThemeToggle() {
 
 export function Navbar() {
   return (
-    <header className="view-container flex items-center justify-between gap-3 pt-10">
+    <header className="view-container flex items-center justify-between gap-2 pt-10">
       <nav aria-label="Primary" className="min-w-0">
-        <ul className="flex flex-wrap items-center gap-1">
+        <ul className="site-nav flex flex-nowrap items-center">
           {navItems.map((item) => (
             <li key={item.to}>
               <NavLink to={item.to} end={item.end} className="nav-link">

@@ -35,7 +35,7 @@ export const socials: Social[] = [
   {
     name: "Instagram",
     handle: "zenenc",
-    href: "https://www.instagram.com/zenenc",
+    href: "https://www.instagram.com/zenen_c",
     icon: "instagram",
   },
 ]

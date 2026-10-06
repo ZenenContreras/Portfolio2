@@ -4,10 +4,11 @@ declare module "*.svg?raw" {
 }
 
 import github from "./github.svg?raw"
+import link from "./link.svg?raw"
 import moon from "./moon.svg?raw"
 import sun from "./sun.svg?raw"
 
-const icons = { github, moon, sun }
+const icons = { github, link, moon, sun }
 
 export function Icon({
   name,

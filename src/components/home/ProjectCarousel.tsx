@@ -1,40 +1,7 @@
 import { useState } from "react"
 import FlexCarousel from "@/components/FlexCarousel"
-import { projects, type Project } from "@/content/projects"
-
-function ProjectCaption({ project }: { project: Project }) {
-  return (
-    <div className="mx-auto mt-4 max-w-md text-center">
-      <p className="text-[15px] text-foreground">{project.title}</p>
-      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-        {project.summary}
-      </p>
-      <p className="mt-1 text-xs text-muted-foreground">{project.stack}</p>
-      <p className="mt-2 flex justify-center gap-4 text-xs">
-        {project.repo ? (
-          <a
-            href={project.repo}
-            className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-        ) : null}
-        {project.site ? (
-          <a
-            href={project.site}
-            className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Link
-          </a>
-        ) : null}
-      </p>
-    </div>
-  )
-}
+import { ProjectDetails } from "@/components/home/ProjectDetails"
+import { projects } from "@/content/projects"
 
 export function ProjectCarousel() {
   const [active, setActive] = useState(0)
@@ -80,7 +47,15 @@ export function ProjectCarousel() {
           />
         </div>
       </div>
-      <ProjectCaption project={project} />
+      <div className="mx-auto mt-4 max-w-md text-center">
+        <p className="text-[15px] text-foreground">{project.title}</p>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+          {project.summary}
+        </p>
+        <div className="mt-2">
+          <ProjectDetails project={project} />
+        </div>
+      </div>
     </section>
   )
 }

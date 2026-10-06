@@ -1,4 +1,5 @@
 import { useId } from "react"
+import zustandMark from "./zustand.png"
 import { brandColors, brandPaths, type BrandName } from "@/components/icons/brands"
 
 type BrandIconProps = {
@@ -20,6 +21,19 @@ export function BrandIcon({
       ? `url(#${gradientId})`
       : (brandColors[name] ?? "currentColor")
 
+  if (name === "zustand") {
+    return (
+      <span
+        aria-hidden="true"
+        className={`inline-block shrink-0 ${className}`}
+        style={{
+          backgroundColor: fill,
+          WebkitMask: `url(${zustandMark}) center / contain no-repeat`,
+          mask: `url(${zustandMark}) center / contain no-repeat`,
+        }}
+      />
+    )
+  }
   return (
     <svg
       viewBox="0 0 24 24"

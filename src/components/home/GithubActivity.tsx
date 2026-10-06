@@ -65,6 +65,21 @@ export function GithubActivity() {
 
   const total = activity.reduce((sum, day) => sum + day.count, 0)
 
+  useEffect(() => {
+    const scroller = frame.current?.querySelector<HTMLElement>(".overflow-x-auto")
+    if (!scroller) return
+    const media = window.matchMedia("(max-width: 39.999rem)")
+    const pin = () => {
+      scroller.scrollLeft = media.matches ? scroller.scrollWidth : 0
+    }
+    const frameId = requestAnimationFrame(() => requestAnimationFrame(pin))
+    media.addEventListener("change", pin)
+    return () => {
+      cancelAnimationFrame(frameId)
+      media.removeEventListener("change", pin)
+    }
+  }, [activity])
+
   function showTip(event: MouseEvent<SVGRectElement>, day: Activity) {
     const graph = frame.current
     if (!graph) return
