@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router"
 import { Icon } from "@/components/icons/Icon"
 import { navItems } from "@/content/navigation"
@@ -8,6 +8,18 @@ function ThemeToggle() {
   const [dark, setDark] = useState(() =>
     document.documentElement.classList.contains("dark"),
   )
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)")
+    const follow = () => {
+      if (localStorage.getItem("theme")) return
+      const next = media.matches
+      document.documentElement.classList.toggle("dark", next)
+      setDark(next)
+    }
+    media.addEventListener("change", follow)
+    return () => media.removeEventListener("change", follow)
+  }, [])
 
   function toggle() {
     const next = !document.documentElement.classList.contains("dark")
