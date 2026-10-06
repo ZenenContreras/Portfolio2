@@ -5,6 +5,7 @@ export type Social = {
   handle: string
   href: string
   icon: BrandName
+  plain?: boolean
 }
 
 export const socials: Social[] = [
@@ -37,5 +38,12 @@ export const socials: Social[] = [
     handle: "zenenc",
     href: "https://www.instagram.com/zenen_c",
     icon: "instagram",
+  },
+  {
+    name: "Gmail",
+    handle: "zenencontreras1@gmail.com",
+    href: "mailto:zenencontreras1@gmail.com",
+    icon: "gmail",
+    plain: true,
   },
 ]

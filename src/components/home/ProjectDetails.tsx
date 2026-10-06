@@ -18,6 +18,7 @@ export function ProjectDetails({
           <li
             key={item.name}
             className="inline-flex items-center gap-1 text-xs text-muted-foreground"
+            data-interact
           >
             <BrandIcon name={item.icon} colored className="size-3.5" />
             {item.name}
@@ -29,6 +30,7 @@ export function ProjectDetails({
           <a
             href={project.repo}
             className="inline-flex items-center gap-1 text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            data-interact
             target="_blank"
             rel="noreferrer"
           >
@@ -40,6 +42,7 @@ export function ProjectDetails({
           <a
             href={project.site}
             className="inline-flex items-center gap-1 text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            data-interact
             target="_blank"
             rel="noreferrer"
           >

@@ -18,6 +18,7 @@ export function Socials({ labelled = true }: SocialsProps) {
           <li key={social.name}>
             <a
               className="social-link"
+              data-interact
               href={social.href}
               rel="noreferrer"
               target="_blank"
@@ -25,7 +26,9 @@ export function Socials({ labelled = true }: SocialsProps) {
               <BrandIcon name={social.icon} colored />
               <span>
                 {social.name}
-                <span className="text-muted-foreground"> @{social.handle}</span>
+                <span className="text-muted-foreground">
+                  {social.plain ? ` ${social.handle}` : ` @${social.handle}`}
+                </span>
               </span>
             </a>
           </li>

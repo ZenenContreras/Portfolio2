@@ -21,7 +21,20 @@ type Tip = {
   text: string
 }
 
-const START = "2025-10-07"
+const REFRESH_MS = 60_000
+
+function isoDate(date: Date) {
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${date.getFullYear()}-${month}-${day}`
+}
+
+function trailingYear() {
+  const end = new Date()
+  const start = new Date(end)
+  start.setDate(start.getDate() - 364)
+  return { start: isoDate(start), end: isoDate(end) }
+}
 
 function dayLabel(day: Activity) {
   const [year, month, date] = day.date.split("-").map(Number)
@@ -41,26 +54,49 @@ export function GithubActivity() {
 
   useEffect(() => {
     const controller = new AbortController()
+    let signature = ""
 
-    fetch(
-      `https://github-contributions-api.jogruber.de/v4/${site.github}`,
-      { signal: controller.signal },
-    )
-      .then((response) => {
-        if (!response.ok) throw new Error("contributions request failed")
-        return response.json() as Promise<ContributionsResponse>
-      })
-      .then((payload) => {
-        const next = payload.contributions
-          .filter((day) => day.date >= START && day.date <= "2026-10-06")
-          .sort((a, b) => a.date.localeCompare(b.date))
-        if (next.length > 0) setActivity(next)
-      })
-      .catch(() => {
-        /* The snapshot in activity-fallback stays on screen. */
-      })
+    const load = () => {
+      if (document.hidden) return
+      const { start, end } = trailingYear()
 
-    return () => controller.abort()
+      fetch(`https://github-contributions-api.jogruber.de/v4/${site.github}`, {
+        signal: controller.signal,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("contributions request failed")
+          return response.json() as Promise<ContributionsResponse>
+        })
+        .then((payload) => {
+          const next = payload.contributions
+            .filter((day) => day.date >= start && day.date <= end)
+            .sort((a, b) => a.date.localeCompare(b.date))
+          if (next.length === 0) return
+          const last = next[next.length - 1]
+          const nextSignature = `${next.length}:${last.date}:${last.count}:${next.reduce((sum, day) => sum + day.count, 0)}`
+          if (nextSignature === signature) return
+          signature = nextSignature
+          setActivity(next)
+        })
+        .catch((error: unknown) => {
+          if (error instanceof DOMException && error.name === "AbortError") return
+          /* The last good data, or the snapshot, stays on screen. */
+        })
+    }
+
+    // ponytail: polls every 60s while the tab is visible. A push feed would replace this if the API offered one.
+    load()
+    const timer = window.setInterval(load, REFRESH_MS)
+    const onVisible = () => {
+      if (!document.hidden) load()
+    }
+    document.addEventListener("visibilitychange", onVisible)
+
+    return () => {
+      controller.abort()
+      window.clearInterval(timer)
+      document.removeEventListener("visibilitychange", onVisible)
+    }
   }, [])
 
   const total = activity.reduce((sum, day) => sum + day.count, 0)
@@ -78,7 +114,7 @@ export function GithubActivity() {
       cancelAnimationFrame(frameId)
       media.removeEventListener("change", pin)
     }
-  }, [activity])
+  }, [])
 
   function showTip(event: MouseEvent<SVGRectElement>, day: Activity) {
     const graph = frame.current

@@ -258,10 +258,7 @@ export const ContributionGraph = ({
   const labels = { ...DEFAULT_LABELS, ...labelsProp };
   const labelHeight = fontSize + LABEL_MARGIN;
 
-  const year =
-    data.length > 0
-      ? getYear(parseISO(data[0].date))
-      : new Date().getFullYear();
+  const year = data.length > 0 ? getYear(parseISO(data[0].date)) : 0;
 
   const totalCount =
     typeof totalCountProp === "number"

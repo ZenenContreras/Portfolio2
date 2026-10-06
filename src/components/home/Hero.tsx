@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section aria-labelledby="profile-name">
       <div className="flex items-center gap-4">
-        <div className="portrait-wrap relative shrink-0">
+        <div className="relative shrink-0">
           <div
             className="size-18 overflow-hidden rounded-full"
             role="img"

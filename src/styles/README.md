@@ -26,4 +26,4 @@ Colors, radius, and the sans font are the shadcn Nova variables in `src/index.cs
 
 ## Motion
 
-The landing reveal uses GSAP (`src/hooks/useReveal.ts`): a short fade and rise, staggered, once. It is skipped when `prefers-reduced-motion` is set. Transitions in this file only change `color`, `opacity`, or `transform`.
+The landing reveal uses GSAP (`src/hooks/useReveal.ts`): a short fade and rise, staggered, once. Hover and press on links, skills, and contribution cells use GSAP too (`src/hooks/useInteract.ts`): a 2px lift and a slight press, and the cells scale in place. Both are skipped when `prefers-reduced-motion` is set. Transitions in this file only change `color` or `opacity`.

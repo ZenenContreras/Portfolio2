@@ -20,6 +20,7 @@ function ThemeToggle() {
     <button
       type="button"
       className="nav-link inline-flex cursor-pointer items-center border-0 bg-transparent"
+      data-interact
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={dark}
       onClick={toggle}
@@ -36,7 +37,12 @@ export function Navbar() {
         <ul className="site-nav flex flex-nowrap items-center">
           {navItems.map((item) => (
             <li key={item.to}>
-              <NavLink to={item.to} end={item.end} className="nav-link">
+              <NavLink
+                to={item.to}
+                end={item.end}
+                className="nav-link"
+                data-interact
+              >
                 {item.label}
               </NavLink>
             </li>
@@ -47,6 +53,7 @@ export function Navbar() {
         <a
           href={`https://github.com/${site.github}`}
           className="nav-link inline-flex items-center"
+          data-interact
           aria-label="GitHub"
           target="_blank"
           rel="noreferrer"

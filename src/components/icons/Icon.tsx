@@ -1,8 +1,3 @@
-declare module "*.svg?raw" {
-  const content: string
-  export default content
-}
-
 import github from "./github.svg?raw"
 import link from "./link.svg?raw"
 import moon from "./moon.svg?raw"
