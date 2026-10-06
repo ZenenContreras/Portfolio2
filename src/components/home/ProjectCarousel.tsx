@@ -1,7 +1,44 @@
+import { useState } from "react"
 import FlexCarousel from "@/components/FlexCarousel"
-import { projects } from "@/content/projects"
+import { projects, type Project } from "@/content/projects"
+
+function ProjectCaption({ project }: { project: Project }) {
+  return (
+    <div className="mx-auto mt-4 max-w-md text-center">
+      <p className="text-[15px] text-foreground">{project.title}</p>
+      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+        {project.summary}
+      </p>
+      <p className="mt-1 text-xs text-muted-foreground">{project.stack}</p>
+      <p className="mt-2 flex justify-center gap-4 text-xs">
+        {project.repo ? (
+          <a
+            href={project.repo}
+            className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+        ) : null}
+        {project.site ? (
+          <a
+            href={project.site}
+            className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Link
+          </a>
+        ) : null}
+      </p>
+    </div>
+  )
+}
 
 export function ProjectCarousel() {
+  const [active, setActive] = useState(0)
+  const project = projects[active] ?? projects[0]
 
   return (
     <section aria-labelledby="projects-heading">
@@ -23,7 +60,7 @@ export function ProjectCarousel() {
             gap={15}
             squeeze={0}
             focusOnClick
-            captions
+            captions={false}
             fit="landscape"
             radius={10}
             lensWidth={0.8}
@@ -39,9 +76,11 @@ export function ProjectCarousel() {
             autoplay
             interval={2.5}
             captureWheel
+            onChange={(index) => setActive(index)}
           />
         </div>
       </div>
+      <ProjectCaption project={project} />
     </section>
   )
 }

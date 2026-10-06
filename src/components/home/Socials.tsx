@@ -22,7 +22,7 @@ export function Socials({ labelled = true }: SocialsProps) {
               rel="noreferrer"
               target="_blank"
             >
-              <BrandIcon name={social.icon} />
+              <BrandIcon name={social.icon} colored />
               <span>
                 {social.name}
                 <span className="text-muted-foreground"> @{social.handle}</span>

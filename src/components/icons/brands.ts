@@ -23,3 +23,21 @@ export const brandPaths = {
 } as const
 
 export type BrandName = keyof typeof brandPaths
+
+/** Brand hex. Names left out stay currentColor so black marks follow the theme. */
+export const brandColors: Partial<Record<BrandName, string>> = {
+  typescript: "#3178C6",
+  javascript: "#F7DF1E",
+  go: "#00ADD8",
+  react: "#61DAFB",
+  gsap: "#88CE02",
+  tailwind: "#06B6D4",
+  node: "#5FA04E",
+  git: "#F05032",
+  linux: "#FCC624",
+  stripe: "#635BFF",
+  postman: "#FF6C37",
+  discord: "#5865F2",
+  linkedin: "#0A66C2",
+  zustand: "#8D6E63",
+}

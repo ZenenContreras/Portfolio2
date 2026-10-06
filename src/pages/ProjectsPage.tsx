@@ -13,21 +13,28 @@ export function ProjectsPage() {
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
               {project.summary}
             </p>
+            <p className="mt-1 text-xs text-muted-foreground">{project.stack}</p>
             <p className="mt-2 flex gap-4 text-xs text-muted-foreground">
               {project.site ? (
                 <a
                   href={project.site}
                   className="underline-offset-4 hover:text-foreground hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Website
+                  Link
                 </a>
               ) : null}
-              <a
-                href={project.repo}
-                className="underline-offset-4 hover:text-foreground hover:underline"
-              >
-                GitHub
-              </a>
+              {project.repo ? (
+                <a
+                  href={project.repo}
+                  className="underline-offset-4 hover:text-foreground hover:underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              ) : null}
             </p>
           </li>
         ))}

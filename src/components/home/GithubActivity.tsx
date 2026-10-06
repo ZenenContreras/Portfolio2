@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState, type MouseEvent } from "react"
 import {
   ContributionGraph,
   ContributionGraphBlock,
@@ -15,10 +15,29 @@ type ContributionsResponse = {
   contributions: Activity[]
 }
 
+type Tip = {
+  x: number
+  y: number
+  text: string
+}
+
 const START = "2025-10-07"
 
+function dayLabel(day: Activity) {
+  const [year, month, date] = day.date.split("-").map(Number)
+  const when = new Date(year, month - 1, date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  })
+  const noun = day.count === 1 ? "commit" : "commits"
+  return `${day.count} ${noun} · ${when}`
+}
+
 export function GithubActivity() {
+  const frame = useRef<HTMLDivElement>(null)
   const [activity, setActivity] = useState<Activity[]>(activityFallback)
+  const [tip, setTip] = useState<Tip | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -46,9 +65,27 @@ export function GithubActivity() {
 
   const total = activity.reduce((sum, day) => sum + day.count, 0)
 
+  function showTip(event: MouseEvent<SVGRectElement>, day: Activity) {
+    const graph = frame.current
+    if (!graph) return
+    const graphBox = graph.getBoundingClientRect()
+    const cell = event.currentTarget.getBoundingClientRect()
+    setTip({
+      x: cell.left + cell.width / 2 - graphBox.left,
+      y: cell.top - graphBox.top,
+      text: dayLabel(day),
+    })
+  }
+
   return (
-    <div className="activity-graph rounded-xl bg-muted p-4">
+    <div className="activity-graph flex justify-center rounded-xl bg-muted p-4">
+      <div
+        ref={frame}
+        className="relative max-w-full"
+        onMouseLeave={() => setTip(null)}
+      >
       <ContributionGraph
+        className="mx-auto"
         data={activity}
         blockSize={8}
         blockMargin={2}
@@ -57,24 +94,32 @@ export function GithubActivity() {
         totalCount={total}
         labels={{ totalCount: "{{count}} contributions in the last year" }}
       >
-        <ContributionGraphCalendar>
+        <ContributionGraphCalendar className="mx-auto w-fit max-w-full">
           {({ activity: day, dayIndex, weekIndex }) => (
             <ContributionGraphBlock
               activity={day}
               dayIndex={dayIndex}
               weekIndex={weekIndex}
-            >
-              <title>
-                {day.count} contributions on {day.date}
-              </title>
-            </ContributionGraphBlock>
+              aria-label={dayLabel(day)}
+              onMouseEnter={(event) => showTip(event, day)}
+            />
           )}
         </ContributionGraphCalendar>
         <ContributionGraphFooter className="mt-3 items-center justify-between text-sm">
           <ContributionGraphTotalCount />
           <ContributionGraphLegend />
         </ContributionGraphFooter>
+        {tip ? (
+          <div
+            role="tooltip"
+            className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-md bg-foreground px-2 py-1 text-[11px] whitespace-nowrap text-background"
+            style={{ left: tip.x, top: tip.y - 6 }}
+          >
+            {tip.text}
+          </div>
+        ) : null}
       </ContributionGraph>
+      </div>
     </div>
   )
 }

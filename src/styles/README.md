@@ -23,7 +23,7 @@ Colors, radius, and the sans font are the shadcn Nova variables in `src/index.cs
 - `page-stack` spaces the landing sections. The first child has no extra top margin.
 - `nav-link` is the muted navigation item. The active page uses `aria-current="page"`.
 - `social-list` / `social-link` is the two-column social row. Hovering the list fades the other links.
-- `activity-graph` keeps empty contribution cells on the page background so they stay visible on the muted card. The calendar scrolls sideways on narrow screens, with the scrollbar hidden.
+- `activity-graph` paints the contribution cells in GitHub green (a darker scale under `.dark`). The calendar is centered and scrolls sideways on narrow screens, with the scrollbar hidden.
 - `carousel-breakout` and `carousel-stage` let the project carousel leave the column. Do not restyle the carousel component itself.
 
 ## Motion

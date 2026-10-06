@@ -17,7 +17,7 @@ export function Skills() {
                   key={`${group.label}-${skill.name}`}
                   className="inline-flex items-center gap-1.5 text-sm text-foreground"
                 >
-                  <BrandIcon name={skill.icon} />
+                  <BrandIcon name={skill.icon} colored />
                   {skill.name}
                 </li>
               ))}

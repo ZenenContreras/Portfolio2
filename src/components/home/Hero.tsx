@@ -1,17 +1,24 @@
-import { site } from "@/content/site"
+import DitherVeil from "@/components/DitherVeil"
+import RotatingText from "@/components/RotatingText"
 import { GithubActivity } from "@/components/home/GithubActivity"
+import { roles, site } from "@/content/site"
 
 export function Hero() {
   return (
     <section aria-labelledby="profile-name">
       <div className="flex items-center gap-4">
-        <img
-          src={site.portrait}
-          alt=""
-          width={72}
-          height={72}
-          className="size-[4.5rem] shrink-0 rounded-full object-cover"
-        />
+        <div
+          className="size-18 shrink-0 overflow-hidden rounded-full"
+          role="img"
+          aria-label={`Portrait of ${site.name}`}
+        >
+          <DitherVeil
+            src={site.portrait}
+            fit="cover"
+            pixelSize={2}
+            revealRadius={32}
+          />
+        </div>
         <div className="min-w-0">
           <h1
             id="profile-name"
@@ -19,7 +26,15 @@ export function Hero() {
           >
             {site.name}
           </h1>
-          <p className="text-base text-foreground">{site.role}</p>
+          <div className="overflow-hidden text-base leading-6 text-foreground">
+            <RotatingText
+              texts={roles}
+              splitBy="words"
+              rotationInterval={2400}
+              staggerDuration={0.03}
+              mainClassName="text-base leading-6 text-foreground"
+            />
+          </div>
         </div>
       </div>
       <p className="mt-6 max-w-[65ch] text-sm leading-relaxed text-muted-foreground">

@@ -1,19 +1,21 @@
-import { createBrowserRouter } from "react-router"
+import { BrowserRouter, Route, Routes } from "react-router"
 import { SiteLayout } from "@/components/layout/SiteLayout"
 import { ContactPage } from "@/pages/ContactPage"
 import { EducationsPage } from "@/pages/EducationsPage"
 import { HomePage } from "@/pages/HomePage"
 import { ProjectsPage } from "@/pages/ProjectsPage"
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: SiteLayout,
-    children: [
-      { index: true, Component: HomePage },
-      { path: "projects", Component: ProjectsPage },
-      { path: "educations", Component: EducationsPage },
-      { path: "contact", Component: ContactPage },
-    ],
-  },
-])
+export function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SiteLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="educations" element={<EducationsPage />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}

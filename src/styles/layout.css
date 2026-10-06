@@ -94,9 +94,27 @@
   opacity: 1;
 }
 
-.activity-graph [data-level="0"] {
-  fill: var(--background);
+.activity-graph {
+  --contrib-0: #ebedf0;
+  --contrib-1: #9be9a8;
+  --contrib-2: #40c463;
+  --contrib-3: #30a14e;
+  --contrib-4: #216e39;
 }
+
+.dark .activity-graph {
+  --contrib-0: #161b22;
+  --contrib-1: #0e4429;
+  --contrib-2: #006d32;
+  --contrib-3: #26a641;
+  --contrib-4: #39d353;
+}
+
+.activity-graph rect[data-level="0"] { fill: var(--contrib-0); }
+.activity-graph rect[data-level="1"] { fill: var(--contrib-1); }
+.activity-graph rect[data-level="2"] { fill: var(--contrib-2); }
+.activity-graph rect[data-level="3"] { fill: var(--contrib-3); }
+.activity-graph rect[data-level="4"] { fill: var(--contrib-4); }
 
 .activity-graph .overflow-x-auto {
   scrollbar-width: none;

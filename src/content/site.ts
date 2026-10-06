@@ -1,3 +1,11 @@
+export const roles = [
+  "Software Engineer",
+  "TypeScript Developer",
+  "Frontend Engineer",
+  "Go Backend",
+  "Next.js Builder",
+]
+
 export const site = {
   name: "Zenen Contreras",
   role: "Software Engineer",
