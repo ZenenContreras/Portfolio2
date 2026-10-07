@@ -25,7 +25,7 @@ export function ProjectCarousel() {
               }))}
               preset="arch"
               intro="rise"
-              cardHeight={0.5}
+              cardHeight={0.6}
               gap={15}
               squeeze={0}
               focusOnClick
@@ -43,7 +43,7 @@ export function ProjectCarousel() {
               liquid={0}
               followCursor={false}
               autoplay
-              interval={3.5}
+              interval={3}
               captureWheel
               onChange={(index) => setActive(index)}
             />

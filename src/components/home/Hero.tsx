@@ -20,7 +20,7 @@ export function Hero() {
                 src={site.portrait}
                 fit="cover"
                 pixelSize={1}
-                revealRadius={45}
+                revealRadius={60}
               />
             </Suspense>
           </div>
