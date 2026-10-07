@@ -26,24 +26,24 @@ export function ProjectCarousel() {
               preset="arch"
               intro="rise"
               cardHeight={0.6}
-              gap={15}
-              squeeze={0}
+              gap={12}
+              squeeze={0.2}
               focusOnClick
               captions={false}
               fit="landscape"
               radius={10}
-              lensWidth={0.8}
-              lensHeight={0.8}
+              lensWidth={2}
+              lensHeight={0.79}
               tilt={0}
               roundness={1}
-              bend={0}
-              reach={0.31}
-              curl="rise"
-              dispersion={0}
+              bend={0.3}
+              reach={0.36}
+              curl="fall"
+              dispersion={0.4}
               liquid={0}
               followCursor={false}
               autoplay
-              interval={3}
+              interval={4}
               captureWheel
               onChange={(index) => setActive(index)}
             />

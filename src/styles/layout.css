@@ -139,17 +139,7 @@
 }
 
 .carousel-stage {
-  height: clamp(20rem, 46vw, 32rem);
-}
-
-@media (min-width: 48rem) {
-  .carousel-breakout {
-    overflow: hidden;
-  }
-
-  .carousel-stage {
-    margin-block: calc(clamp(20rem, 46vw, 32rem) * -0.1);
-  }
+  height: calc(min(100vw, 46rem) * 0.68);
 }
 
 @media (prefers-reduced-motion: reduce) {
