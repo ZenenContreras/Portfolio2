@@ -16,7 +16,16 @@ export function EducationsPage() {
             <li key={`${item.school}-${item.program}`} className="py-4">
 
               <div className="flex items-center gap-4">
-                <img src={item.img} alt={item.school} className="h-12 rounded-full" />
+                {item.img ? (
+                  <img
+                    src={item.img}
+                    alt={item.school}
+                    width={48}
+                    height={48}
+                    decoding="sync"
+                    className="size-12 shrink-0 rounded-full bg-muted object-cover"
+                  />
+                ) : null}
                 <div className="flex flex-col">
                   <h2 className="text-base text-primary">{item.program}</h2>
                   <p className="text-sm text-foreground">{item.school}</p>
