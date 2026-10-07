@@ -36,7 +36,7 @@ export const projects: Project[] = [
     summary:
       "Github profile search tool built with React and Tailwind CSS to search for users, their repositories and their commits.",
     stack: [
-      { name: "TypeScript", icon: "typescript" },
+      { name: "JavaScript", icon: "javascript" },
       { name: "React", icon: "react" },
       { name: "Tailwind CSS", icon: "tailwind" },
       { name: "Vercel", icon: "vercel" },

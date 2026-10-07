@@ -10,16 +10,23 @@ export type Social = {
 
 export const socials: Social[] = [
   {
-    name: "GitHub",
-    handle: "zenencontreras",
-    href: "https://github.com/zenencontreras",
-    icon: "github",
+    name: "Gmail",
+    handle: "zenencontreras1@gmail.com",
+    href: "mailto:zenencontreras1@gmail.com",
+    icon: "gmail",
+    plain: true,
   },
   {
     name: "X",
     handle: "zenendev",
     href: "https://x.com/zenendev",
     icon: "x",
+  },
+  {
+    name: "GitHub",
+    handle: "zenencontreras",
+    href: "https://github.com/zenencontreras",
+    icon: "github",
   },
   {
     name: "LinkedIn",
@@ -38,12 +45,5 @@ export const socials: Social[] = [
     handle: "zenen_c",
     href: "https://www.instagram.com/zenen_c",
     icon: "instagram",
-  },
-  {
-    name: "Gmail",
-    handle: "zenencontreras1@gmail.com",
-    href: "mailto:zenencontreras1@gmail.com",
-    icon: "gmail",
-    plain: true,
   },
 ]

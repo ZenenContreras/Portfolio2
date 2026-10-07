@@ -28,7 +28,7 @@ export function Hero() {
         <div className="min-w-0">
           <h1
             id="profile-name"
-            className="text-2xl leading-snug font-semibold tracking-tight text-primary"
+            className="text-2xl leading-snug font-bold tracking-tight text-primary"
           >
             {site.name}
           </h1>
@@ -37,9 +37,9 @@ export function Hero() {
               <RotatingText
                 texts={roles}
                 splitBy="words"
-                rotationInterval={2400}
+                rotationInterval={2600}
                 staggerDuration={0.03}
-                mainClassName="text-base leading-6 text-foreground"
+                mainClassName="text-base leading-6 text-foreground font-medium"
               />
             </Suspense>
           </div>
