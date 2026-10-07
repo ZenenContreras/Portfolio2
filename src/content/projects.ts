@@ -19,7 +19,7 @@ export const projects: Project[] = [
   {
     title: "Tout à un Clic Là",
     summary:
-      "A shop for Latin American products in Montreal, with delivery across Canada.",
+      "A shop for Latin American products in Montreal, with delivery across Montreal. 600+ users and 300+ orders.",
     stack: [
       { name: "Next.js", icon: "nextjs" },
       { name: "Express", icon: "express" },
@@ -32,31 +32,33 @@ export const projects: Project[] = [
     site: "https://www.toutaunclicla.com",
   },
   {
-    title: "Fabio Canchila",
+    title: "DevPulse",
     summary:
-      "A professional site for a consultant working on territorial development.",
+      "Github profile search tool built with React and Tailwind CSS to search for users, their repositories and their commits.",
     stack: [
       { name: "TypeScript", icon: "typescript" },
       { name: "React", icon: "react" },
       { name: "Tailwind CSS", icon: "tailwind" },
+      { name: "Vercel", icon: "vercel" },
     ],
-    image: "/projects/fabio.png",
-    imageAlt: "Hero of the Fabio Canchila site",
-    site: "https://fabiocanchila.vercel.app",
-    repo: "https://github.com/zenencontreras/fabiocanchila",
+    image: "/projects/devpulse.webp",
+    imageAlt: "Hero of the DevPulse site",
+    site: "https://devpulse.zenen.tech",
+    repo: "https://github.com/ZenenContreras/Roadmap/tree/main/Mes1/Semana3/DevPulse",
   },
   {
-    title: "Nazly Royero",
+    title: "Fabio Canchila",
     summary:
-      "A site for a mentor working on personal and organizational transformation.",
+      "A professional site for a consultant working on territorial development, With admin dashboard for managing content.",
     stack: [
-      { name: "TypeScript", icon: "typescript" },
       { name: "React", icon: "react" },
       { name: "Tailwind CSS", icon: "tailwind" },
+      { name: "Supabase", icon: "supabase" },
+      { name: "Vercel", icon: "vercel" },
     ],
-    image: "/projects/nazly.png",
-    imageAlt: "Hero of the Nazly Royero site",
-    site: "https://nazlyroyero.vercel.app",
-    repo: "https://github.com/zenencontreras/NazlyRoyero",
+    image: "/projects/fabio.webp",  
+    imageAlt: "Hero of the Fabio Canchila site",
+    site: "https://www.fabiocanchila.com",
+    repo: "https://github.com/ZenenContreras/fabiocanchila",
   },
 ]
