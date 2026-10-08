@@ -15,7 +15,7 @@ export function Skills() {
               {group.items.map((skill) => (
                 <li
                   key={`${group.label}-${skill.name}`}
-                  className="inline-flex items-center gap-1.5 text-sm text-foreground"
+                  className="inline-flex items-center gap-1.5 text-sm text-foreground cursor-pointer"
                   data-interact
                 >
                   <BrandIcon name={skill.icon} colored />

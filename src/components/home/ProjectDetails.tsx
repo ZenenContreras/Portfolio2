@@ -17,7 +17,7 @@ export function ProjectDetails({
         {project.stack.map((item) => (
           <li
             key={item.name}
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground"
+            className="inline-flex items-center gap-1 text-xs text-muted-foreground cursor-pointer"
             data-interact
           >
             <BrandIcon name={item.icon} colored className="size-3.5" />

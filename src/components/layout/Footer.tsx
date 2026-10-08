@@ -19,12 +19,12 @@ export function Footer() {
     <footer className="view-container mt-auto pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between gap-4 border-t border-border pt-3">
         <p className="text-xs text-muted-foreground">
-          Last updated · {site.lastUpdated}
+          Last Updated: <br /> {site.lastUpdated}
         </p>
-        <p className="text-xs text-muted-foreground">
-          © {site.year} {site.name}
+        <p className="text-xs text-muted-foreground text-center">
+          © {site.year} <br /> {site.name}
         </p>
-        <p className="text-xs text-muted-foreground">{hora} in Colombia</p>
+        <p className="text-xs text-muted-foreground text-end">{hora}<br /> in Colombia</p>
       </div>
     </footer>
   )
