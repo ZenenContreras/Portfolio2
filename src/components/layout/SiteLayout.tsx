@@ -3,12 +3,14 @@ import { Footer } from "@/components/layout/Footer"
 import { Navbar } from "@/components/layout/Navbar"
 import { useInteract } from "@/hooks/useInteract"
 import { BackgroundASCII } from "@/components/home/BackgroundASCII"
+import { DocumentMeta } from "@/components/layout/DocumentMeta"
 
 export function SiteLayout() {
   const scope = useInteract()
 
   return (
     <div ref={scope} className="page-shell relative min-h-screen w-full flex flex-col">
+      <DocumentMeta />
       
       <div className="pointer-events-none fixed inset-0 z-0">
         <BackgroundASCII />
