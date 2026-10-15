@@ -273,7 +273,6 @@ void main() {
   float cardAspect = uSize.x / uSize.y;
   float imageAspect = uImage.x / max(uImage.y, 1.0);
   vec2 scale = imageAspect > cardAspect ? vec2(cardAspect / imageAspect, 1.0) : vec2(1.0, imageAspect / cardAspect);
-  scale /= 1.08;
   vec2 uv = vec2(local.x, 1.0 - local.y);
   uv = (uv - 0.5) * scale + 0.5;
   uv.x += uShift * (1.0 - scale.x) * 0.5;
@@ -1063,6 +1062,8 @@ const FlexCarousel = ({
           const halfW = (s.lensWidth * width) / 2;
           const halfH = (s.lensHeight * width) / 2;
           fetch('http://127.0.0.1:7406/ingest/d446c214-2e6d-40c9-a767-8f599d632f8d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'bd679e'},body:JSON.stringify({sessionId:'bd679e',hypothesisId:'A',location:'FlexCarousel.tsx:draw',message:'center card fit',data:{stage:[width,height],fit:s.fit,image:slot.image,imageAspect,card:[center.cw,center.ch],cardAspect,uvScale,visibleFraction:uvScale,y0:center.y-center.ch/2,y1:center.y+center.ch/2,clippedTop:(center.y-center.ch/2)<0,clippedBottom:(center.y+center.ch/2)>height,lensHalf:[halfW,halfH],bend:s.bend,curl:s.curl,shiftAtCenter:Math.max(-1,Math.min(1,center.rel/(width*0.75)))},timestamp:Date.now()})}).catch(()=>{});
+          const shown = imageAspect > cardAspect ? [cardAspect / imageAspect, 1] : [1, imageAspect / cardAspect];
+          fetch('http://127.0.0.1:7406/ingest/d446c214-2e6d-40c9-a767-8f599d632f8d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'bd679e'},body:JSON.stringify({sessionId:'bd679e',runId:'post-fix',hypothesisId:'A',location:'FlexCarousel.tsx:draw',message:'shader visible fraction',data:{shown,fullImage:Math.abs(shown[0]-1)<0.001&&Math.abs(shown[1]-1)<0.001},timestamp:Date.now()})}).catch(()=>{});
         }
         // #endregion
         let first = true;
