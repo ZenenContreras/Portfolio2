@@ -559,7 +559,6 @@ const FlexCarousel = ({
     let visible = true;
     let alive = true;
     let dirty = true;
-    let debugFitLogged = false;
     let activeIndex = -1;
     let interactedAt = -Infinity;
     let autoplayAt = performance.now();
@@ -618,9 +617,6 @@ const FlexCarousel = ({
         texture.update();
         slot.image = [image.naturalWidth || 1, image.naturalHeight || 1];
         slot.aspect = slot.image[0] / slot.image[1];
-        // #region agent log
-        fetch('http://127.0.0.1:7406/ingest/d446c214-2e6d-40c9-a767-8f599d632f8d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'bd679e'},body:JSON.stringify({sessionId:'bd679e',hypothesisId:'B',location:'FlexCarousel.tsx:onload',message:'project image decoded',data:{src:item.src,width:slot.image[0],height:slot.image[1],aspect:slot.aspect,target:4/3},timestamp:Date.now()})}).catch(()=>{});
-        // #endregion
         try {
           const probe = document.createElement('canvas');
           probe.width = 8;
@@ -1049,23 +1045,6 @@ const FlexCarousel = ({
           }
         }
         draws.sort((a, b) => Math.abs(b.rel) - Math.abs(a.rel));
-        // #region agent log
-        if (!debugFitLogged && draws.length && slots.some(slot => slot.loaded)) {
-          debugFitLogged = true;
-          const center = draws.reduce((best, draw) => (Math.abs(draw.rel) < Math.abs(best.rel) ? draw : best));
-          const slot = slots[center.i];
-          const imageAspect = slot.image[0] / Math.max(slot.image[1], 1);
-          const cardAspect = center.cw / Math.max(center.ch, 1);
-          const uvScale = imageAspect > cardAspect ? [cardAspect / imageAspect, 1] : [1, imageAspect / cardAspect];
-          uvScale[0] /= 1.08;
-          uvScale[1] /= 1.08;
-          const halfW = (s.lensWidth * width) / 2;
-          const halfH = (s.lensHeight * width) / 2;
-          fetch('http://127.0.0.1:7406/ingest/d446c214-2e6d-40c9-a767-8f599d632f8d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'bd679e'},body:JSON.stringify({sessionId:'bd679e',hypothesisId:'A',location:'FlexCarousel.tsx:draw',message:'center card fit',data:{stage:[width,height],fit:s.fit,image:slot.image,imageAspect,card:[center.cw,center.ch],cardAspect,uvScale,visibleFraction:uvScale,y0:center.y-center.ch/2,y1:center.y+center.ch/2,clippedTop:(center.y-center.ch/2)<0,clippedBottom:(center.y+center.ch/2)>height,lensHalf:[halfW,halfH],bend:s.bend,curl:s.curl,shiftAtCenter:Math.max(-1,Math.min(1,center.rel/(width*0.75)))},timestamp:Date.now()})}).catch(()=>{});
-          const shown = imageAspect > cardAspect ? [cardAspect / imageAspect, 1] : [1, imageAspect / cardAspect];
-          fetch('http://127.0.0.1:7406/ingest/d446c214-2e6d-40c9-a767-8f599d632f8d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'bd679e'},body:JSON.stringify({sessionId:'bd679e',runId:'post-fix',hypothesisId:'A',location:'FlexCarousel.tsx:draw',message:'shader visible fraction',data:{shown,fullImage:Math.abs(shown[0]-1)<0.001&&Math.abs(shown[1]-1)<0.001},timestamp:Date.now()})}).catch(()=>{});
-        }
-        // #endregion
         let first = true;
         for (const draw of draws) {
           const slot = slots[draw.i];
