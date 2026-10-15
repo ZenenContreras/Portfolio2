@@ -32,7 +32,7 @@
   min-height: 100vh;
   flex-direction: column;
   overflow-x: clip;
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
 }
 

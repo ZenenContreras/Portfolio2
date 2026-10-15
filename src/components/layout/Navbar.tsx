@@ -44,7 +44,7 @@ function ThemeToggle() {
 
 export function Navbar() {
   return (
-    <header className="view-container flex items-center justify-between gap-2 pt-10">
+    <header className="sticky top-0 z-50 view-container flex items-center justify-between gap-2 pt-10">
       <nav aria-label="Primary" className="min-w-0">
         <ul className="site-nav flex flex-nowrap items-center">
           {navItems.map((item) => (

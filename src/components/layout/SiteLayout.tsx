@@ -2,7 +2,7 @@ import { Outlet } from "react-router"
 import { Footer } from "@/components/layout/Footer"
 import { Navbar } from "@/components/layout/Navbar"
 import { useInteract } from "@/hooks/useInteract"
-import BackgroundASCII from "@/components/home/BackgroundASCII" // Tu ruta correcta
+import { BackgroundASCII } from "@/components/home/BackgroundASCII"
 
 export function SiteLayout() {
   const scope = useInteract()
@@ -10,7 +10,7 @@ export function SiteLayout() {
   return (
     <div ref={scope} className="page-shell relative min-h-screen w-full flex flex-col">
       
-      <div className="fixed inset-0 -z-10 overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 z-0">
         <BackgroundASCII />
       </div>
 

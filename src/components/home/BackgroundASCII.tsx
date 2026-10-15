@@ -1,34 +1,35 @@
-import GradientASCII from '../GradientASCII'
+import { useEffect, useState } from "react"
+import GradientASCII from "@/components/GradientASCII"
 
+const lightColors = ["#84cc16", "#e9f7d3", "#10b981", "#16cc3d"]
+const darkColors = ["#052e16", "#14532d", "#166534", "#84cc16"]
 
-function BackgroundASCII() {
-  return (
-    <div className="absolute inset-0 w-full h-full bg-black">
-        <GradientASCII
-            colors={["#84cc16","#e9f7d3","#10b981","#16cc3d"]}
-            shape="horizon"
-            characters=" =+xX0S8#@"
-            cellSize={8}
-            density={0.8}
-            glyphOpacity={0.85}
-            glow={0.2}
-            depthOfField={0}
-            flicker={0.2}
-            softness={0.5}
-            scale={1}
-            flow={0.5}
-            speed={1}
-            gradientOpacity={0.9}
-            grain={0.08}
-            variation={0}
-            mouseInteraction
-            scrambleRadius={0.1}
-            clickEffect="wave"
-            intro
-            lightMode
-        />
-    </div>
+function useLightTheme() {
+  const [light, setLight] = useState(
+    () => !document.documentElement.classList.contains("dark"),
   )
+
+  useEffect(() => {
+    const root = document.documentElement
+    const sync = () => setLight(!root.classList.contains("dark"))
+    const observer = new MutationObserver(sync)
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] })
+    return () => observer.disconnect()
+  }, [])
+
+  return light
 }
 
-export default BackgroundASCII
+export function BackgroundASCII() {
+  const light = useLightTheme()
+
+  return (
+    <GradientASCII
+      className="absolute inset-0"
+      colors={light ? lightColors : darkColors}
+      cellSize={8}
+      lightMode={light}
+      grain={0.2}
+    />
+  )
+}
