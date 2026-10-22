@@ -18,7 +18,7 @@ export function Socials({ labelled = true }: SocialsProps) {
       y: 50,
       duration: 1,
       scrollTrigger: {
-        trigger: ".skills",
+        trigger: ".socials",
         start: "top 85%",
         toggleActions: "play none none reverse" 
       }})
