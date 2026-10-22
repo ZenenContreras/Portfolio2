@@ -1,9 +1,19 @@
 import { ProjectDetails } from "@/components/home/ProjectDetails"
 import { projects } from "@/content/projects"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 
 export function ProjectsPage() {
+
+  useGSAP(() => {
+    gsap.from(".projects", {
+      opacity: 0,
+      duration: 1
+    })
+  }, [])
+
   return (
-    <section aria-labelledby="projects-page-heading">
+    <section aria-labelledby="projects-page-heading" className="projects">
       <h1 id="projects-page-heading" className="section-title">
         projects.
       </h1>

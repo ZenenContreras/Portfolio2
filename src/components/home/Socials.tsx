@@ -1,10 +1,5 @@
 import { BrandIcon } from "@/components/icons/BrandIcon"
 import { socials } from "@/content/socials"
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger) 
 
 type SocialsProps = {
   labelled?: boolean
@@ -12,20 +7,8 @@ type SocialsProps = {
 
 export function Socials({ labelled = true }: SocialsProps) {
 
-  useGSAP(() => {
-    gsap.from(".socials", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".socials",
-        start: "top 85%",
-        toggleActions: "play none none reverse" 
-      }})
-  })
-
   return (
-    <section className="socials" aria-labelledby={labelled ? "socials-heading" : undefined}>
+    <section caria-labelledby={labelled ? "socials-heading" : undefined}>
       {labelled ? (
         <h2 id="socials-heading" className="section-title">
           socials.

@@ -1,8 +1,18 @@
 import { educations } from "@/content/education"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 
 export function EducationsPage() {
+
+  useGSAP(() => {
+    gsap.from(".educations", {
+      opacity: 0,
+      duration: 1
+    })
+  }, [])
+
   return (
-    <section aria-labelledby="educations-heading">
+    <section aria-labelledby="educations-heading" className="educations">
       <h1 id="educations-heading" className="section-title">
         educations.
       </h1>

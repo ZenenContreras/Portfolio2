@@ -12,7 +12,7 @@ export function Skills() {
   useGSAP(() => {
     gsap.from(".skills", {
       opacity: 0,
-      y: 50,
+      y: 25,
       duration: 1,
       scrollTrigger: {
         trigger: ".skills",
