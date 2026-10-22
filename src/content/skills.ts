@@ -27,6 +27,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "Zustand", icon: "zustand" },
       { name: "GSAP", icon: "gsap" },
       { name: "Tailwind CSS", icon: "tailwind" },
+      { name: "React Router", icon: "reactrouter" },
     ],
   },
   {
@@ -34,6 +35,8 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: "Node.js", icon: "node" },
       { name: "Express", icon: "express" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Supabase", icon: "supabase" },
       { name: "Go", icon: "go" },
     ],
   },
@@ -42,6 +45,8 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: "Git", icon: "git" },
       { name: "GitHub", icon: "github" },
+      { name: "Docker", icon: "docker" },
+      { name: "Figma", icon: "figma" },
       { name: "Linux", icon: "linux" },
       { name: "Stripe", icon: "stripe" },
       { name: "Postman", icon: "postman" },
