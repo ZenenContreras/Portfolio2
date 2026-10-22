@@ -2,7 +2,6 @@ import { Outlet } from "react-router"
 import { Footer } from "@/components/layout/Footer"
 import { Navbar } from "@/components/layout/Navbar"
 import { useInteract } from "@/hooks/useInteract"
-import { BackgroundASCII } from "@/components/home/BackgroundASCII"
 import { DocumentMeta } from "@/components/layout/DocumentMeta"
 
 export function SiteLayout() {
@@ -12,9 +11,6 @@ export function SiteLayout() {
     <div ref={scope} className="page-shell relative min-h-screen w-full flex flex-col">
       <DocumentMeta />
       
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <BackgroundASCII />
-      </div>
 
       <div className="relative z-10 flex flex-col flex-1 w-full pointer-events-none">       
         <div className="pointer-events-auto">

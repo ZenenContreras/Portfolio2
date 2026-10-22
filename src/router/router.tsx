@@ -4,6 +4,7 @@ import { ContactPage } from "@/pages/ContactPage"
 import { EducationsPage } from "@/pages/EducationsPage"
 import { HomePage } from "@/pages/HomePage"
 import { ProjectsPage } from "@/pages/ProjectsPage"
+import NotFound from "@/pages/NotFound"
 
 export function AppRouter() {
   return (
@@ -14,6 +15,7 @@ export function AppRouter() {
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="educations" element={<EducationsPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

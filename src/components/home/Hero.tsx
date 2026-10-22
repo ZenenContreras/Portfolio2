@@ -1,13 +1,19 @@
 import { lazy, Suspense } from "react"
 import { GithubActivity } from "@/components/home/GithubActivity"
 import { roles, site } from "@/content/site"
+import {useGSAP} from "@gsap/react"
+import gsap from "gsap"
 
 const DitherVeil = lazy(() => import("@/components/DitherVeil"))
 const RotatingText = lazy(() => import("@/components/RotatingText"))
 
 export function Hero() {
+  useGSAP(() =>{
+    gsap.fromTo(".hero" , {opacity: 0}, {opacity: 1, duration: 1})
+  }, [])
+
   return (
-    <section aria-labelledby="profile-name">
+    <section aria-labelledby="profile-name" className="hero">
       <div className="flex items-center gap-4">
         <div className="relative shrink-0">
           <div

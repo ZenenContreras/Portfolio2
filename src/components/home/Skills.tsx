@@ -1,9 +1,28 @@
 import { BrandIcon } from "@/components/icons/BrandIcon"
 import { skillGroups } from "@/content/skills"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+
+gsap.registerPlugin(ScrollTrigger) 
 
 export function Skills() {
+
+  useGSAP(() => {
+    gsap.from(".skills", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".skills",
+        start: "top 85%",
+        toggleActions: "play none none reverse" 
+      }})
+  })
+
   return (
-    <section aria-labelledby="skills-heading">
+    <section aria-labelledby="skills-heading" className="skills">
       <h2 id="skills-heading" className="section-title">
         skills.
       </h2>
